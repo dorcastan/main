@@ -7,7 +7,7 @@ import static seedu.mark.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-class FolderTest {
+public class FolderTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {

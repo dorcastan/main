@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import seedu.mark.logic.commands.TabCommand;
 import seedu.mark.logic.parser.exceptions.ParseException;
 
-class TabCommandParserTest {
+public class TabCommandParserTest {
 
     private TabCommandParser parser = new TabCommandParser();
 

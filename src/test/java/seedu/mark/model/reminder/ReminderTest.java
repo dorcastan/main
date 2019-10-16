@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.mark.testutil.ReminderBuilder;
 
-class ReminderTest {
+public class ReminderTest {
 
     @Test
     public void isSameBookmark() {

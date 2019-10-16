@@ -6,7 +6,7 @@ import static seedu.mark.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-class NoteTest {
+public class NoteTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Note(null));
