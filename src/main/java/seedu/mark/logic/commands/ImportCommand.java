@@ -18,7 +18,6 @@ import seedu.mark.model.Model;
 import seedu.mark.model.ReadOnlyMark;
 import seedu.mark.model.bookmark.Bookmark;
 import seedu.mark.model.bookmark.Folder;
-import seedu.mark.model.folderstructure.FolderStructure;
 import seedu.mark.storage.JsonMarkStorage;
 import seedu.mark.storage.Storage;
 
@@ -96,7 +95,6 @@ public class ImportCommand extends Command {
         ReadOnlyMark newMark = readMarkFromStorage(storage, filePath);
 
         MarkImporter importer = new MarkImporter(model, newMark);
-        importer.importFolders();
 
         if (!importer.hasBookmarksToImport()) {
             return new CommandResult(String.format(MESSAGE_NO_BOOKMARKS_TO_IMPORT,
@@ -104,7 +102,6 @@ public class ImportCommand extends Command {
         }
         importer.importBookmarks();
 
-        // TODO: rewrite messages to indicate whether folders were imported
         String message = importer.hasExistingBookmarks()
                 ? String.format(MESSAGE_IMPORT_SUCCESS_WITH_DUPLICATES, filePath,
                     importer.getExistingBookmarksAsString())
@@ -131,13 +128,11 @@ public class ImportCommand extends Command {
      */
     public static class MarkImporter {
         private Model model;
-        private FolderStructure foldersToImport;
         private List<Bookmark> existingBookmarks = new ArrayList<>();
         private List<Bookmark> bookmarksToImport = new ArrayList<>();
 
         MarkImporter(Model model, ReadOnlyMark markToImport) {
             this.model = model;
-            this.foldersToImport = markToImport.getFolderStructure();
             processBookmarks(markToImport.getBookmarkList());
         }
 
@@ -168,10 +163,6 @@ public class ImportCommand extends Command {
 
         private Model getModel() {
             return this.model;
-        }
-
-        public FolderStructure getFolders() {
-            return this.foldersToImport;
         }
 
         /**
@@ -233,10 +224,6 @@ public class ImportCommand extends Command {
             model.saveMark();
         }
 
-        public void importFolders() {
-            model.addFolders(foldersToImport);
-        }
-
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -253,7 +240,6 @@ public class ImportCommand extends Command {
             MarkImporter markImporter = (MarkImporter) other;
 
             return getModel().equals(markImporter.getModel())
-                    && getFolders().equals(markImporter.getFolders())
                     && getExistingBookmarks().equals(markImporter.getExistingBookmarks())
                     && getBookmarksToImport().equals(markImporter.getBookmarksToImport());
         }

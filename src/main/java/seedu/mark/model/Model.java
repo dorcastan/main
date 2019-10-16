@@ -10,7 +10,6 @@ import seedu.mark.commons.core.GuiSettings;
 import seedu.mark.model.bookmark.Bookmark;
 import seedu.mark.model.bookmark.Folder;
 import seedu.mark.model.bookmark.Url;
-import seedu.mark.model.folderstructure.FolderStructure;
 
 /**
  * The API of the Model component.
@@ -99,12 +98,6 @@ public interface Model {
     void addFolder(Folder folder, Folder parentFolder);
 
     boolean hasFolder(Folder folder);
-
-    /**
-     * Attempts to add a structure of folders to Mark.
-     * Implementation to be decided.
-     */
-    void addFolders(FolderStructure foldersToAdd);
 
     /*
      * Wrapper for current url.
