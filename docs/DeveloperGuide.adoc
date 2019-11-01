@@ -305,8 +305,18 @@ undo stack and pushing it into the redo stack. There is no way to pop multiple s
 === Autotag feature
 ==== Implementation
 
-The autotag mechanism is facilitated by `AutotagController`. It stores and manages a list of `SelectiveBookmarkTaggers` which apply tags to
-bookmarks if they match specific criteria. It also implements the following operations:
+// TODO: Revamp this completely. Explain the autotag package and available methods.
+The autotag package is structured in the following manner: _(To be completed.)_
+
+.Class diagram for seedu.mark.model.autotag package
+image::AutotagPackageDiagram.png[]
+
+`AutotagController` is the primary class that facilitates the autotag mechanism.
+It stores and manages a list of `SelectiveBookmarkTaggers` which apply tags to
+bookmarks if they match specific criteria.
+// TODO: Be more specific.
+
+It also implements the following operations:
 
 * `AutotagController#hasTagger(SelectiveBookmarkTagger)` -- Checks whether the controller contains the given tagger.
 * `AutotagController#addTagger(SelectiveBookmarkTagger)` -- Starts managing the given tagger.
@@ -315,6 +325,8 @@ bookmarks if they match specific criteria. It also implements the following oper
 
 The first three operations are exposed in the `Model` interface as `Model#hasTagger(SelectiveBookmarkTagger)`, `Model#addTagger(SelectiveBookmarkTagger)`,
 and `Model#applyAllTaggers()` respectively.
+
+// TODO: Explain SelectiveBookmarkTaggers
 
 Given below is an example usage scenario and how the autotag mechanism behaves at each step.
 
